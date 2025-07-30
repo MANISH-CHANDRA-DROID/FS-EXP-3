@@ -1,0 +1,96 @@
+/* Base light theme */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: white;
+  color: black;
+  transition: all 0.3s ease;
+}
+
+.dashboard {
+  display: grid;
+  grid-template-areas:
+    "header header"
+    "sidebar main"
+    "footer footer";
+  grid-template-columns: 200px 1fr;
+  grid-template-rows: auto 1fr auto;
+  min-height: 100vh;
+}
+
+/* Layout Sections */
+.header {
+  grid-area: header;
+  background-color: #4caf50;
+  color: white;
+  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.sidebar {
+  grid-area: sidebar;
+  background-color: #f0f0f0;
+  padding: 1rem;
+}
+
+.sidebar a {
+  color: #4a148c;
+  text-decoration: none;
+}
+
+.main {
+  grid-area: main;
+  padding: 2rem;
+}
+
+.footer {
+  grid-area: footer;
+  background-color: #4caf50;
+  color: white;
+  text-align: center;
+  padding: 1rem;
+}
+
+.theme-switch {
+  color: white;
+  cursor: pointer;
+}
+
+/* Dark mode using checkbox hack */
+#theme-toggle:checked ~ .dashboard {
+  background-color: #121212;
+  color: #e0e0e0;
+}
+
+#theme-toggle:checked ~ .dashboard .header,
+#theme-toggle:checked ~ .dashboard .footer {
+  background-color: #333;
+}
+
+#theme-toggle:checked ~ .dashboard .sidebar {
+  background-color: #1e1e1e;
+}
+
+#theme-toggle:checked ~ .dashboard a {
+  color: #bb86fc;
+}
+
+/* Responsive design */
+@media (max-width: 600px) {
+  .dashboard {
+    grid-template-areas:
+      "header"
+      "main"
+      "sidebar"
+      "footer";
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr auto auto;
+  }
+
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
